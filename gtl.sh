@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 PHPSESSID="$1"
-CSRF_TOKEN="$2"
-CURL_HOPTS="Cookie: PHPSESSID=$PHPSESSID; YII_CSRF_TOKEN=$CSRF_TOKEN"
+CURL_HOPTS="Cookie: PHPSESSID=$PHPSESSID"
 
 TOKILEARNING='http://tokilearning.org'
 MAIN_PAGE="$TOKILEARNING/training/7/chapter/46"

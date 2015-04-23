@@ -5,7 +5,7 @@ Script for grabbing source code of accepted submission in [Tokilearning](http://
 
 ## Usage
 
-    ./gtl.sh [PHPSESSID] [CSRF_TOKEN]
+    ./gtl.sh [PHPSESSID]
 
 
 ## License
