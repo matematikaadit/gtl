@@ -14,7 +14,7 @@ scrapping() { curl -s "$1" -H "$CURL_HOPTS" | grep "$2"; }
 cannonize_url() { cut -d\" -f2 | sed "s|^|$TOKILEARNING|"; }
 listing() { scrapping "$1" "$2" | cannonize_url; }
 get_title() { scrapping "$@" '<title>' |  sed 's|^ *<title>TOKI Learning Center - ||;s|</title> *$||;s|&amp;|\&|'; }
-normalize_title() { sed 'y/ :/_-/;s/&/dan/g' <<< "$@"; }
+normalize_title() { sed "y/ :/_-/;s/&/dan/g;s/,//g;s/+/plus/g;s/?//g;s/'//g;s/[a-z]/\u&/g" <<< "$@"; }
 accepted_submission_url() { scrapping "$@" '<td>Accepted</td>' | head -n1 | grep -o 'href="[^"]*"' | cannonize_url; }
 accepted_submission_dl() { sed 's/$/?action=download/' <<< "$@"; }
 find_prop() { grep -A1 "<span class=\"name\">$2</span>" "$1" | tail -n1 | sed "$3"; }
