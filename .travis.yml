@@ -1,0 +1,21 @@
+language: go
+before_install:
+- go get github.com/mitchellh/gox
+before_script:
+- gox -os="darwin linux windows" -arch="386 amd64" -build-toolchain
+script:
+- gox -os="darwin linux windows" -arch="386 amd64"
+deploy:
+  provider: releases
+  api_key:
+    secure: ijrW1zo67+gd+hvZIdAff55R9SAwCQ8SNIJiDQlw971woMfOJp8++c7x2kMTC6w8UW37ulbL279F+pjqOGg5ImsTKsdOFPTeJ8JGs5L/U8GN7Vt+4fgQYwhMoui7IOHXkmAEGOOH/0bpw9kWkHXtRu72kecgcYBofUKaMRiV/A4=
+  file:
+    - "gtl_darwin_386"
+    - "gtl_darwin_amd64"
+    - "gtl_linux_386"
+    - "gtl_linux_amd64"
+    - "gtl_windows_386.exe"
+    - "gtl_windows_amd64.exe"
+  on:
+    repo: matematikaadit/gtl
+    tags: true
